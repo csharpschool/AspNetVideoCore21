@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetVideoCore.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -28,10 +29,11 @@ namespace AspNetVideoCore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IMessageService, HardcodedMessageService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IMessageService msg)
         {
             if (env.IsDevelopment())
             {
@@ -40,8 +42,7 @@ namespace AspNetVideoCore
 
             app.Run(async (context) =>
             {
-                var message = Configuration["Message"];
-                await context.Response.WriteAsync(message);
+                await context.Response.WriteAsync(msg.GetMessage());
             });
         }
     }
