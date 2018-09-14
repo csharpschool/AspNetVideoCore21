@@ -4,6 +4,7 @@ using System.Linq;
 using System;
 using AspNetVideoCore.Models;
 using AspNetVideoCore.ViewModels;
+using AspNetVideoCore.Entities;
 
 namespace AspNetVideoCore.Controllers
 {
@@ -44,9 +45,26 @@ namespace AspNetVideoCore.Controllers
             });
         }
 
+        [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Create(
+            VideoEditViewModel model)
+        {
+            var video = new Video
+            {
+                Title = model.Title,
+                Genre = model.Genre
+            };
+
+            _videos.Add(video);
+
+            return RedirectToAction("Details", new { id = video.Id });
+        }
+
     }
 }
