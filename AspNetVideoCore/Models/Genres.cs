@@ -8,8 +8,8 @@ namespace AspNetVideoCore.Models
     public enum Genres
     {
         None,
-        Animated,
         Horror,
+        Animated,
         Comedy,
         Romance,
         Action
