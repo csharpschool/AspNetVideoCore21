@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using AspNetVideoCore.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace AspNetVideoCore
 {
@@ -36,6 +38,9 @@ namespace AspNetVideoCore
         {
             var conn = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<VideoDbContext>(options => options.UseSqlServer(conn));
+
+            services.AddIdentity<User, IdentityRole>()
+                    .AddEntityFrameworkStores<VideoDbContext>(); ;
 
             services.AddMvc();
             services.AddSingleton(provider => Configuration);
