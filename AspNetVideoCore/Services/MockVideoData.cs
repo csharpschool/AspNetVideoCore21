@@ -14,9 +14,9 @@ namespace AspNetVideoCore.Services
         {
             _videos = new List<Video>
             {
-                new Video { Id = 1, Title = "Shreck" },
-                new Video { Id = 2, Title = "Despicable Me" },
-                new Video { Id = 3, Title = "Megamind" }
+                new Video { Id = 1, GenreId = 2, Title = "Shreck" },
+                new Video { Id = 2, GenreId = 2, Title = "Despicable Me" },
+                new Video { Id = 3, GenreId = 2, Title = "Megamind" }
             };
         }
 
