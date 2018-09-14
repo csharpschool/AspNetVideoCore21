@@ -2,6 +2,11 @@
 @model AspNetVideoCore.Entities.Video
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h2>Create Video</h2>
 
 <form asp-action="Create" method="post">
@@ -25,3 +30,8 @@
 </form>
 
 <a asp-action="Index">Back to List</a>
+
+@section footer
+    {
+    <div>This is the Create footer</div>
+}
