@@ -1,10 +1,11 @@
 ﻿@model VideoViewModel
 
-<section>
-    <h3>@Model.Title</h3>
-    <div>@Model.Genre</div>
-    <div>
+<div class="card border-success mb-3">
+    <div class="card-header bg-success border-success">@Model.Title</div>
+    <div class="card-body">
+        <p class="card-text">@Model.Genre</p>
         <a asp-action="Details" asp-route-id="@Model.Id">Details</a>
         <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
     </div>
-</section>
+</div>
+

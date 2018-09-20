@@ -5,14 +5,18 @@
 @if (SignInManager.IsSignedIn(User))
 {
     // Signed in user
-    <div>@User.Identity.Name</div>
     <form method="post" asp-controller="Account" asp-action="Logout">
-        <input type="submit" value="Logout" />
+        @User.Identity.Name
+        <input type="submit" value="Logout" class="btn btn-danger" />
     </form>
 }
 else
 {
     // Anonymous user
-    <a asp-controller="Account" asp-action="Login">Login</a>
-    <a asp-controller="Account" asp-action="Register">Register</a>
+    <li class="nav-item">
+        <a asp-controller="Account" asp-action="Login" class="btn btn-outline-dark mr-sm-1">Login</a>
+    </li>
+    <li class="nav-item">
+        <a asp-controller="Account" asp-action="Register" class="btn btn-outline-success">Register</a>
+    </li>
 }
